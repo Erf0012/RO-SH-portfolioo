@@ -1,0 +1,1768 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    position: relative;
+    background: transparent;
+}
+
+/* بکگراند ثابت کل سایت */
+body::before {
+    content: "";
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-image: url("image/a.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0.5;
+
+    z-index: -1;
+    pointer-events: none;
+}
+
+header{
+    z-index: 900;
+    position: fixed;
+    background-color: rgba(255,255,255,0.1) ;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s ease;
+}
+
+header.sticky{
+    background-color: #3a6cf4 !important;
+    padding: 10px 200px;
+}
+
+header .brand{
+    color: white;
+    font-size: 1.8em;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+
+
+
+header .navigation{
+    position: relative;
+}
+
+header .navigation a{
+    color: white;
+    font-size: 1em;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 30px;
+}
+
+header .navigation a:hover{
+    color: #f4aa3a;
+}
+
+header .sticky .navigation a:hover{
+    color: black;
+}
+
+section{
+    padding: 100px 200px;
+}
+
+.main{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.main .content{
+    max-width: 800px;
+}
+
+.main .content h2{
+    color: white;
+    font-size: 2em;
+    font-weight: 500;
+}
+
+.main .content h2 span{
+    font-size: 2.8rem;
+    font-weight: 600;
+}
+
+.animated-text{
+    position: relative;
+    height: 70px;
+    overflow: hidden;
+}
+
+.animated-text h3{
+    color: #4e9eff;
+    font-size: 3em;
+    font-weight: 900;
+    line-height: 70px;
+    letter-spacing: 1px;
+}
+
+.animated-text h3:nth-child(1){
+    animation: text-move 6s infinite ease-out;
+}
+
+@keyframes text-move {
+    0%,15%{
+        margin-top: 0px;
+    }
+    
+    25%,40%{
+        margin-top: -70px;
+    }
+    
+    50%,65%{
+        margin-top: -140px;
+    }
+    
+    75%,90%{
+        margin-top: -70px;
+    }
+    
+    100%{
+        margin-top: 0px;
+    }
+}
+
+.btn{
+    color: white;
+    background-color: #3a6cf4;
+    font-size: 1em;
+    font-weight: 600;
+    display: inline-block;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    margin-top: 30px;
+    transition: 0.5s ease;
+}
+
+.btn:hover{
+    background-color: #d6a503;
+}
+
+.media-icons{
+    margin-top: 50px;
+}
+
+.media-icons a{
+    color: white;
+    font-size: 25px;
+    margin-right: 30px;
+}
+
+
+/* About */
+
+.title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section-title{
+    position: relative;
+    color: #3a6cf4;
+    font-size: 2.2em;
+    font-weight: 800;
+    margin-bottom: 60px;
+}
+
+.section-title::before{
+    content: "";
+    position: absolute;
+    top: 56px;
+    left: 50%;
+    width: 140px;
+    height: 4px;
+    background-color: #3a6cf4;
+    transform: translateX(-50%);
+}
+
+.section-title::after{
+    content: "";
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #3a6cf4;
+    transform: translateX(-50%);
+}
+
+.about .content{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.about .content .col-left{
+    position: relative;
+    width: 45%;
+}
+
+.about .content .col-right{
+    position: relative;
+    width: 50%;
+}
+
+.about .content .col-left .img-card{
+    position: relative;
+    width: 100%;
+    min-height: 450px;
+}
+
+.about .content .col-left .img-card img{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 125%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.about .content .col-right .content-title{
+    font-size: 2em;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.about .content .col-right .paragraph-text{
+    font-size: 1em;
+}
+
+/* Social Media Colors */
+
+.media-icons{
+    background-color: #daac2d;
+    
+    margin-top: 50px;
+    margin-right: 40px;
+    border-radius: 20px;
+    width: 250px;
+
+    opacity: 0;
+    animation: socialShow 1s ease forwards;
+    animation-delay: 1s;
+}
+
+@keyframes socialShow {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    
+    
+
+
+.fa-youtube {
+    color: #FF0000;
+    margin-left: 10px;
+}
+
+.media-icons .fa-telegram {
+    color: #229ED9;
+}
+
+.media-icons .fa-whatsapp {
+    color: #25D366;
+}
+
+.media-icons .fa-github {
+    color: #181717;
+}
+
+/* Skills Section */
+
+.skills{
+    background-color: black;
+}
+
+.skills .content{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-top: 20px;
+}
+
+.skills .content .col-left{
+    position: relative;
+    width: 46%;
+}
+
+.skills .content .col-left .content-title{
+    margin-bottom: 20px;
+}
+
+.skills .content .col-right{
+    position: relative;
+    width: 46%;
+}
+
+.skills .content .col-right .bar{
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.skills .content .col-right .bar .info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.skills .content .col-right .br .info span{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.skills .content .col-right .bar .line{
+    position: relative;
+    width: 100%;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 2px;
+}
+
+.skills .content .col-right .bar .line::before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 3px;
+}
+
+.skills .content .col-right .bar .html::before{
+    width: 95%;
+    background-color: #e45126;
+}
+
+.skills .content .col-right .bar .css::before{
+    width: 90%;
+    background-color: #0c73b8;
+}
+
+.skills .content .col-right .bar .javascript::before{
+    width: 80%;
+    background-color: #e3a324;
+}
+
+.skills .content .col-right .bar .python::before{
+    width: 85%;
+    background-color: blue;
+}
+
+.skills .content .col-right .bar .b::before{
+    width: 65%;
+    background-color: #6d7eb8;
+}
+.skills .content .col-right .bar .a::before{
+    width: 100%;
+    background-color: #196d00;
+}
+.skills .content .col-right .bar .c::before{
+    width: 90%;
+    background-color: #420000;
+}
+.skills .content .col-right .bar .d::before{
+    width: 80%;
+    background-color: #940976;
+}
+.skills .content .col-right .bar .e::before{
+    width: 75%;
+    background-color: #2a3538;
+}
+
+/* Services */
+
+.services .content{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.title p{
+    font-size: 1em;
+    width: 80%;
+    text-align: center;
+}
+
+.services .content .card{
+    background-color: #fff;
+    width: 340px;
+    margin: 10px;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(1 1 1/15%);
+    transition: 0.3s linear;
+}
+
+.services .content .card .service-icon{
+    color: #3a6cf4;
+    font-size: 8rem;
+    text-align: center;
+    transition: 0.3s linear;
+}
+
+.services .content .card .info{
+    text-align: center;
+}
+
+.services .content .card .info h3{
+    color: #3a6cf4;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 10px;
+    transition: 0.3s linear;
+    
+}
+
+.services .content .card:hover{
+    background-color: #3a6cf4;
+    color: white;
+}
+
+.services .content .card:hover .service-icon,
+.services .content .card:hover .info h3
+{
+    transform: translateY(-10px);
+    color: white;
+}
+
+/* Work */
+
+.work{
+    background-color: #000016;
+}
+
+.work .content{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.work .content .card{
+    width: 350px;
+    margin: 20px;
+}
+
+.work .content .card .card-img{
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.work .content .card .card-img img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px; 
+    transition: 0.3s linear;
+}
+
+.work .content .card .card-img img:hover{
+    transform: scale(1.5);
+}
+
+
+.work1{
+   background-color: #000016; 
+}
+
+.work1 .content1{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.work1 .content1 .card{
+    width: 820px;
+    margin: 20px;
+}
+
+.work1 .content1 .card .card-img{
+    position: relative;
+    width: 100%;
+    height: 580px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.work1 .content1 .card .card-img img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px; 
+    transition: 0.3s linear;
+}
+
+.work1 .content1 .card .card-img img:hover{
+    transform: scale(1.5);
+}
+
+/* Text under project images */
+
+.work .card-info,
+.work1 .card-info {
+    text-align: center;
+    padding: 15px 5px 20px;
+}
+
+.work .card-info h3,
+.work1 .card-info h3 {
+    color: #3a6cf4;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.work .card-info p,
+.work1 .card-info p {
+    color: #e9a105;
+    font-size: 0.9em;
+    font-weight: 400;
+}
+
+/* ========================================= */
+/* ARTISTIC DASHED LINE BETWEEN PROJECTS */
+/* ========================================= */
+
+.work,
+.work1 {
+    position: relative;
+}
+
+
+/* محتوای کارت‌ها بالای خط قرار می‌گیرد */
+.work .content,
+.work1 .content1 {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* SVG خط‌چین */
+.project-line {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    overflow: visible;
+}
+
+
+/* خود خط */
+.project-line path {
+
+    fill: none;
+
+    stroke: #3a6cf4;
+
+    stroke-width: 3;
+
+    stroke-dasharray: 8 10;
+
+    stroke-linecap: round;
+
+    animation: dashMove 2s linear infinite;
+}
+
+
+/* حرکت خط‌چین */
+@keyframes dashMove {
+
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: -36;
+    }
+
+}
+
+
+/* جلوگیری از اینکه کارت‌ها توسط خط پوشانده شوند */
+
+.work .card,
+.work1 .card {
+
+    position: relative;
+
+    z-index: 3;
+
+}
+
+
+
+/* Contact */
+
+.contact .content{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .contact .content .row{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  
+  .contact .content .row .card{
+    background: #fff;
+    width: 240px;
+    margin: 20px;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 5px 25px rgba(1 1 1 / 15%);
+    border-radius: 10px;
+  }
+  
+  .contact .content .row .card .contact-icon{
+    color: #3a6cf4;
+    font-size: 4em;
+    text-align: center;
+    transition: transform 0.5s ease;
+  }
+  
+  .contact .content .row .card:hover .contact-icon{
+    transform: translateY(-10px);
+  }
+  
+  .contact .content .row .card .info{
+    text-align: center;
+  }
+  
+  .contact .content .row .card .info h3{
+    color: #111;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 10px;
+  }
+  
+  .contact .content .row .card .info span{
+    color: #666;
+    font-weight: 500;
+  }
+  
+  .contact-form{
+    background: #fff;
+    max-width: 600px;
+    margin-top: 50px;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(1 1 1 / 15%);
+  }
+  
+  .contact-form h3{
+    color: #111;
+    font-size: 1.6em;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .contact-form .input-box{
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .contact-form .input-box input,
+  .contact-form .input-box textarea{
+    color: #111;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    font-weight: 400;
+    outline: none;
+    border: 1px solid #111;
+    border-radius: 5px;
+    resize: none;
+  }
+  
+  .contact-form .input-box .send-btn{
+    color: #fff;
+    background: #3a6cf4;
+    display: inline-block;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s ease;
+  }
+  
+  .contact-form .input-box .send-btn:hover{
+    background: #235bf6;
+  }
+
+  /* Footer */
+  
+  .footer{
+    background: #000016;
+    color: #fff;
+    text-align: center;
+    padding: 2em;
+  }
+  
+  .footer .footer-title{
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  .footer p{
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .footer p a{
+    color: #3a6cf4;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+
+
+@media (max-width:1040px) {
+    
+    header{
+        padding: 12px 20px;
+    }
+
+    header.sticky{
+        padding: 10px 20px;
+    }
+
+    header .navigation{
+        display: none;
+    }
+
+    .navigation.active{
+        z-index: 889;
+        position: fixed;
+        background-color: white;
+        top: 0;
+        right: 0;
+        width: 380px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 0 5px 25px rgba(1 1 1/ 15%);
+        transition: 0.3s ease;
+    }
+
+    header .navigation a{
+        color: black;
+        font-size: 1.2em;
+        margin: 10px;
+        padding: 10px 40px;
+        border-radius: 5px;
+    }
+
+    header .navigation a:hover{
+        background-color: #3a6cf4;
+        color: white;
+        transition: 0.3s ease;
+    }
+
+    .menu-btn{
+        position: absolute;
+        background-image: url(image/menu.png);
+        background-position: center;
+        background-size: 30px;
+        background-repeat: no-repeat;
+        width: 40px;
+        height: 40px;
+        right: 0;
+        margin: 0 20px;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    .menu-btn.active{
+        z-index: 999;
+        background-image: url(image/close.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 25px;
+        transition: 0.3s ease;
+        filter: invert(1);
+    }
+
+    section{
+        padding: 80px 20px;
+    }
+
+    .main .content h2{
+        font-size: 1em;
+    }
+
+    .animated-text h3{
+        font-size: 2.2em;
+    }
+
+    .section-title{
+        font-size: 1.8em;
+    }
+
+    .about .content{
+        flex-direction: column;
+    }
+
+    .about .content .column{
+        width: 100%;
+        position: relative;
+    }
+
+    .about .content .col-right{
+        margin-top: 40px;
+    }
+
+    /* Skills */
+
+    .skills .content{
+        flex-direction: column;
+    }
+
+    .skills .content .column{
+        position: relative;
+        width: 100%;
+    }
+
+    .skills .content .col-right{
+        margin-top: 40px;
+    }
+ 
+    .contact-form{
+        padding: 35px 40px;
+      }
+}
+
+
+.scrollToTop-btn{
+    z-index: 999;
+    position: fixed;
+    background: #3a6cf4;
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    right: 0;
+    bottom: 10px;
+    font-size: 22px;
+    text-align: center;
+    line-height: 45px;
+    border-radius: 3px;
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  
+html {
+    scroll-behavior: smooth;
+}
+
+.dashed-line {
+   width: 2000px;
+   border-top: 5px dashed #3a6cf4;
+   margin: auto ;
+
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+/* =========================
+   MOBILE RESPONSIVE
+   ========================= */
+
+@media (max-width: 768px) {
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* ---------- HEADER ---------- */
+
+    header {
+        padding: 15px 20px;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    /* ---------- SECTIONS ---------- */
+
+    section {
+        width: 100%;
+        padding: 60px 15px;
+    }
+
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 35px;
+    }
+
+    /* ---------- ABOUT ---------- */
+
+    .about .content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about .column {
+        width: 100%;
+    }
+
+    /* Profile image */
+
+    .about .img-card {
+        width: 330px;
+        height: 330px;
+        max-width: 330px;
+        max-height: 330px;
+        margin: 0 auto 80px;
+    }
+
+    .about .img-card img {
+        width: 280px;
+        height: 280px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    /* ---------- ABOUT TEXT ---------- */
+
+    .about .content .column {
+        padding: 0;
+    }
+
+    .about h3 {
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+    .about p {
+        font-size: 13px;
+        line-height: 1.8;
+        text-align: left;
+    }
+
+    /* ---------- SKILLS ---------- */
+
+    .skills {
+        width: 100%;
+    }
+
+    .skills .content {
+        width: 100%;
+    }
+
+    .skills .column {
+        width: 100%;
+    }
+
+    .skills h3 {
+        font-size: 20px;
+    }
+
+    .skills p {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    /* Skill bars */
+
+    .skill-bar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* ---------- BUTTON ---------- */
+
+    .btn {
+        font-size: 11px;
+        padding: 10px 15px;
+    }
+
+    /* ---------- WORKS ---------- */
+
+    .work .content
+     {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .work .card
+     {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .card-img {
+        width: 100%;
+    }
+
+
+    .work1 .content1 {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+    
+    }
+ 
+
+    .card-img img {
+        width: 100%;
+        max-width: 100% !important;
+        display: block;
+        object-fit: contain !important;
+        
+       
+    }
+
+ 
+    
+ 
+    
+
+    /* ---------- TEXT UNDER IMAGES ---------- */
+
+    .card-info {
+        padding: 12px 5px;
+    }
+
+    .card-info h3 {
+        font-size: 16px;
+    }
+
+    .card-info p {
+        font-size: 12px;
+        margin-top: 0;
+    }
+
+}
+
+
+/* =========================================
+   SECRET ARCHITECT MODE
+   ========================================= */
+
+/* =========================================================
+   SECRET / ARCHITECT MODE
+   ========================================================= */
+
+#secret-overlay {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    z-index: 999999;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(40, 40, 40, 0.35),
+            #000 70%
+        );
+
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(1);
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease,
+        transform 1s ease;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   OVERLAY ACTIVE
+   ========================================================= */
+
+#secret-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =========================================================
+   BACKGROUND GRID
+   ========================================================= */
+
+#secret-overlay::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+
+    pointer-events: none;
+
+    animation: gridMove 12s linear infinite;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.secret-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(700px, 90%);
+
+    text-align: center;
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================================================
+   INTRO STAGE
+   ========================================================= */
+
+.intro-stage {
+
+    opacity: 1;
+
+    transform:
+        scale(1)
+        translateY(0);
+
+    transition:
+        opacity .7s ease,
+        transform .7s cubic-bezier(.16,1,.3,1);
+}
+
+
+/* خروج مرحله اول */
+
+.intro-stage.hide {
+
+    opacity: 0;
+
+    transform:
+        scale(.85)
+        translateY(-20px);
+}
+
+
+/* =========================================================
+   SECRET SYMBOL
+   ========================================================= */
+
+.secret-symbol {
+
+    font-size:
+        clamp(55px, 12vw, 110px);
+
+    margin-bottom: 20px;
+
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(255,255,255,.3)
+        );
+
+    animation:
+        skullPulse 2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.secret-content h1 {
+
+    font-size:
+        clamp(30px, 7vw, 65px);
+
+    letter-spacing: 8px;
+
+    margin:
+        0 0 15px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   WARNING
+   ========================================================= */
+
+.secret-warning {
+
+    font-size: 14px;
+
+    letter-spacing: 4px;
+
+    opacity: .6;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.secret-status {
+
+    margin-top: 15px;
+
+    font-family: monospace;
+
+    font-size: 13px;
+
+    opacity: .7;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   LOADING STAGE
+   ========================================================= */
+
+.loading-stage {
+
+    opacity: 0;
+
+    transform:
+        scale(1.08)
+        translateY(20px);
+
+    pointer-events: none;
+
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.16,1,.3,1);
+}
+
+
+/* وقتی Loading شروع می‌شود */
+
+.loading-stage.show {
+
+    opacity: 1;
+
+    transform:
+        scale(1)
+        translateY(0);
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   LOADING BAR
+   ==============================================
+   =========== */
+
+.secret-loader {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    height: 4px;
+
+    margin:
+        30px auto 0;
+
+    background:
+        rgba(255,255,255,.12);
+
+    overflow: hidden;
+
+    border-radius: 10px;
+}
+
+
+/*
+   خیلی مهم:
+   اینجا animation نمی‌گذاریم.
+
+   چون JavaScript خودش width را
+   از 0 تا 100 تغییر می‌دهد.
+*/
+
+.secret-loader span {
+
+    display: block;
+
+    width: 0%;
+
+    height: 100%;
+
+    background: #fff;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 10px #fff,
+        0 0 25px rgba(255,255,255,.5);
+
+    transition:
+        width .03s linear;
+}
+
+
+/* =========================================================
+   LOADING INFORMATION
+   ========================================================= */
+
+.loading-info {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    margin:
+        15px auto 0;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    font-family: monospace;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    opacity: .7;
+}
+
+
+/* =========================================================
+   LOADING STATUS
+   ========================================================= */
+
+#loading-status {
+
+    text-align: left;
+}
+
+
+/* =========================================================
+   LOADING PERCENT
+   ========================================================= */
+
+#loading-percent {
+
+    min-width: 45px;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   FINAL EXIT
+   ========================================================= */
+
+/*
+   JavaScript هنگام 100% این موارد را
+   خودش روی overlay اعمال می‌کند:
+
+   opacity: 0
+   transform: scale(1.08)
+*/
+
+#secret-overlay.exiting {
+
+    opacity: 0;
+
+    transform:
+        scale(1.08);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes skullPulse {
+
+    0% {
+
+        transform:
+            scale(1);
+
+        filter:
+            drop-shadow(
+                0 0 15px
+                rgba(255,255,255,.2)
+            );
+    }
+
+    50% {
+
+        transform:
+            scale(1.06);
+
+        filter:
+            drop-shadow(
+                0 0 30px
+                rgba(255,255,255,.45)
+            );
+    }
+
+    100% {
+
+        transform:
+            scale(1);
+
+        filter:
+            drop-shadow(
+                0 0 15px
+                rgba(255,255,255,.2)
+            );
+    }
+}
+
+
+/* =========================================================
+   MOVING GRID
+   ========================================================= */
+
+@keyframes gridMove {
+
+    0% {
+
+        transform:
+            translate(0,0);
+    }
+
+    50% {
+
+        transform:
+            translate(22px,22px);
+    }
+
+    100% {
+
+        transform:
+            translate(45px,45px);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    #secret-overlay {
+
+        padding:
+            20px;
+    }
+
+
+    .secret-content {
+
+        width: 90%;
+    }
+
+
+    .secret-symbol {
+
+        font-size: 45px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .secret-content h1 {
+
+        font-size: 25px;
+
+        letter-spacing: 5px;
+    }
+
+
+    .secret-warning {
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+
+        margin-bottom: 25px;
+    }
+
+
+    .secret-status {
+
+        font-size: 10px;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    .secret-loader {
+
+        height: 3px;
+
+        margin-top: 25px;
+    }
+
+
+    .loading-info {
+
+        font-size: 9px;
+
+        letter-spacing: 1px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .secret-symbol {
+
+        font-size: 38px;
+    }
+
+
+    .secret-content h1 {
+
+        font-size: 21px;
+
+        letter-spacing: 4px;
+    }
+
+
+    .secret-warning {
+
+        font-size: 9px;
+    }
+
+
+    .loading-info {
+
+        font-size:8px;
+    }
+
+}
+
+/* =========================================
+   ROSH ATTENTION ANIMATION
+   ========================================= */
+
+/* =========================================
+   THE POWER OF ARCHITECT
+   ATTENTION ANIMATION
+   ========================================= */
+
+.brand a {
+    animation:
+        brandColor 4s infinite ease-in-out,
+        brandGlow 1.8s infinite ease-in-out;
+
+    transition: color 0.3s ease;
+    text-decoration: none !important;
+}
+
+
+/* تغییر مداوم رنگ */
+
+@keyframes brandColor {
+
+    0% {
+        color: #ffffff;
+    }
+
+    16% {
+        color: #00e5ff;
+    }
+
+    32% {
+        color: #7c4dff;
+    }
+
+    48% {
+        color: #ff4081;
+    }
+
+    64% {
+        color: #ff9100;
+    }
+
+    80% {
+        color: #76ff03;
+    }
+
+    100% {
+        color: #ffffff;
+    }
+}
+
+
+/* Glow + Pulse بدون transform
+   تا با AOS تداخل نداشته باشد */
+
+@keyframes brandGlow {
+
+    0%, 100% {
+        text-shadow:
+            0 0 3px rgba(255,255,255,0.2);
+
+        filter: brightness(1);
+    }
+
+    50% {
+        text-shadow:
+            0 0 8px currentColor,
+            0 0 18px currentColor,
+            0 0 30px currentColor;
+
+        filter: brightness(1.35);
+    }
+}
