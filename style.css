@@ -2737,7 +2737,7 @@ html {
 .neon-callout {
     position: absolute ;
 
-    top: 150px ;
+    top: 90px ;
     left: 210px ;
 
     width: 190px;
@@ -3191,7 +3191,7 @@ animation-delay: 1s;
 @media (max-width: 768px) {
 
     .neon-callout {
-        top: 65px;
+        top: 115px;
         left: 120px;
 
         transform: scale(.75);
