@@ -10,13 +10,38 @@
 </head>
 
 <body>
+   <div class="neon-callout">
 
+        <div class="neon-bulbs">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="neon-arrow">
+            <div class="arrow-line"></div>
+            <div class="arrow-head"></div>
+        </div>
+
+        <div class="click-text">
+            <span><h3>CLICK HERE</h3></span>
+            <span><h6>ENTER SECRET MODE</h6></span>
+        </div>
+
+        
+       </div>
 
     <header>
         
         <div class="brand">
         <a href="#brand" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">THE POWER OF ARCHITECT</a>
        </div>
+    
   
         <div class="menu-btn"></div>
         <div class="navigation">
@@ -621,9 +646,19 @@ alt="Parametric Design 2">
     </script>
     <script>
 
-        window.addEventListener("scroll", function(){
-    scrollBtn.classList.toggle("active", window.scrollY > 500);
+       
+document.addEventListener("DOMContentLoaded", function () {
+
+    const callout = document.querySelector(".neon-callout");
+
+    if (callout) {
+        document.body.appendChild(callout);
+    }
+
 });
+
+
+
 
 //javascript for scroll back to top on click scroll-to-top button
 
@@ -660,6 +695,72 @@ alt="Parametric Design 2">
 // 7 CLICKS
 // =========================================
 
+
+
+// =========================================
+// CLASSIFIED ARCHITECT MODE
+// QUESTION SECURITY SYSTEM
+// =========================================
+
+const questions = [
+
+    {
+        question: "17 × 13 = ?",
+        answers: ["221"]
+    },
+
+    {
+        question: "What is the capital of Australia?",
+        answers: ["canberra", "کانبرا"]
+    },
+
+    {
+        question: "How many continents are there?",
+        answers: ["7", "seven"]
+    },
+
+    {
+        question: "What is 144 ÷ 12?",
+        answers: ["12"]
+    },
+
+    {
+        question: "Which country is home to the Great Wall?",
+        answers: ["china", "چین"]
+    },
+
+    {
+        question: "25² = ?",
+        answers: ["625"]
+    },
+
+    {
+        question: "What is the capital of Japan?",
+        answers: ["tokyo", "توکیو"]
+    },
+
+    {
+        question: "19 × 14 = ?",
+        answers: ["266"]
+    },
+
+    {
+        question: "How many sides does a hexagon have?",
+        answers: ["6", "six"]
+    },
+
+    {
+        question: "What is 15% of 200?",
+        answers: ["30"]
+    }
+
+];
+
+
+// =========================================
+// BRAND CLICK
+// =========================================
+
 const brand = document.querySelector(".brand");
 
 let secretClicks = 0;
@@ -667,7 +768,7 @@ let secretTimer;
 
 if (brand) {
 
-    brand.addEventListener("click", function (e) {
+    brand.addEventListener("click", function(e) {
 
         e.preventDefault();
 
@@ -679,7 +780,8 @@ if (brand) {
             secretClicks = 0;
         }, 1500);
 
-        // با یک کلیک اجرا می‌شود
+
+        // برای تست فعلاً با یک کلیک اجرا می‌شود
         if (secretClicks === 1) {
 
             secretClicks = 0;
@@ -693,64 +795,124 @@ if (brand) {
 }
 
 
+// =========================================
+// START SECRET MODE
+// =========================================
+
 function activateSecretMode() {
 
-    // جلوگیری از اجرای دوباره
     if (document.getElementById("secret-overlay")) return;
 
-
-    // =========================
-    // ساخت Overlay
-    // =========================
 
     const overlay = document.createElement("div");
 
     overlay.id = "secret-overlay";
 
+
+    // انتخاب سؤال تصادفی
+
+    const randomQuestion =
+        questions[
+            Math.floor(
+                Math.random() * questions.length
+            )
+        ];
+
+
     overlay.innerHTML = `
 
         <div class="secret-content">
 
-            <!-- مرحله اول -->
-
-            <div class="intro-stage">
+            <div class="security-stage">
 
                 <div class="secret-symbol">
-                    ☠️ 🃏 ➿ 🔜
+                    ☠️ 🃏➿🔜
                 </div>
 
-                <h1>ARCHITECT MODE</h1>
+                <h1>
+                    ARCHITECT MODE
+                </h1>
 
                 <div class="secret-warning">
-                  <h2>  CLASSIFIED ARCHIVE ACCESS </h2>
+                    <h2>CLASSIFIED ARCHIVE ACCESS</h2>
                 </div>
 
-                <div class="secret-status intro-status">
-                   <h2> PREPARING SAFE MODE... </h2>
+
+                <div class="security-message">
+
+                    <span>
+                       <h2> WARNING</h2>
+                    </span>
+
+                    <p>
+                       <h2> RESTRICTED ACCESS DETECTED</h2>
+                    </p>
+
+                </div>
+
+
+                <div class="security-question">
+
+                    <div class="question-label">
+                       <h3> SECURITY QUESTION</h3>
+                    </div>
+
+                    <div class="question-text">
+                        ${randomQuestion.question}
+                    </div>
+
+
+                    <input
+                        id="security-answer"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="ENTER ANSWER"
+                    >
+
+
+                    <button
+                        id="verify-access"
+                        type="button"
+                    >
+                        VERIFY ACCESS
+                    </button>
+
+
+                    <div
+                        class="security-hint"
+                        id="security-hint"
+                    >
+                       <h3> AUTHORIZATION REQUIRED</h3>
+                    </div>
+
                 </div>
 
             </div>
 
 
-            <!-- مرحله دوم -->
+            <!-- LOADING STAGE -->
 
             <div class="loading-stage">
 
                 <div class="secret-symbol">
-                    ☠️ 🃏 ➿ 🔜
+                    ☠️ 🃏➿🔜
                 </div>
 
-                <h1>ARCHITECT MODE</h1>
+                <h1>
+                    ARCHITECT MODE
+                </h1>
 
                 <div class="secret-warning">
-                    <h2>  CLASSIFIED ARCHIVE ACCESS </h2>
+                   <h2> CLASSIFIED ARCHIVE ACCESS </h2>
                 </div>
+
 
                 <div class="secret-loader">
 
                     <span id="loading-bar"></span>
 
                 </div>
+
 
                 <div class="loading-info">
 
@@ -776,8 +938,6 @@ function activateSecretMode() {
     document.body.style.overflow = "hidden";
 
 
-    // شروع ظاهر شدن Overlay
-
     requestAnimationFrame(() => {
 
         overlay.classList.add("active");
@@ -785,67 +945,230 @@ function activateSecretMode() {
     });
 
 
-    // ==================================================
-    // مرحله اول
-    // فقط نمایش ARCHITECT MODE
-    // بدون Loading Bar
-    // ==================================================
+    // =====================================
+    // VERIFY ANSWER
+    // =====================================
 
-    setTimeout(() => {
+    const answerInput =
+        overlay.querySelector("#security-answer");
 
-        const introStage =
-            overlay.querySelector(".intro-stage");
-
-        const loadingStage =
-            overlay.querySelector(".loading-stage");
+    const verifyButton =
+        overlay.querySelector("#verify-access");
 
 
-        // خروج نرم مرحله اول
+    verifyButton.addEventListener("click", () => {
 
-        introStage.classList.add("hide");
-
-
-        setTimeout(() => {
-
-            introStage.style.display = "none";
-
-            loadingStage.classList.add("show");
-
-            startLoading(overlay);
-
-        }, 700);
+        const userAnswer =
+            answerInput.value
+                .trim()
+                .toLowerCase();
 
 
-    }, 4000);
+        const correct =
+            randomQuestion.answers.some(
+                answer =>
+                    answer.toLowerCase() === userAnswer
+            );
+
+
+        if (correct) {
+
+            securityGranted(overlay);
+
+        } else {
+
+            showAccessDenied(
+                overlay,
+                answerInput
+            );
+
+        }
+
+    });
+
+
+    // Enter key
+
+    answerInput.addEventListener(
+        "keydown",
+        function(e) {
+
+            if (e.key === "Enter") {
+
+                verifyButton.click();
+
+            }
+
+        }
+    );
 
 }
 
 
+// =========================================
+// ACCESS DENIED
+// =========================================
 
-// ==================================================
-// مرحله دوم: Loading
-// ==================================================
+function showAccessDenied(overlay, input) {
+
+    playDeniedSound();
+
+    const securityStage =
+        overlay.querySelector(".security-stage");
+
+    // مخفی کردن کامل سؤال و فرم
+    securityStage.classList.add("denied-hide");
+
+
+    // ساخت صفحه Access Denied
+    const denied =
+        document.createElement("div");
+
+    denied.className = "access-denied";
+
+    denied.innerHTML = `
+
+        <div class="access-denied-box">
+
+            <div class="denied-glitch">
+                ACCESS DENIED
+            </div>
+
+            <div class="denied-sub">
+                <h2>INVALID ANSWER</h2>
+            </div>
+
+            <div class="denied-retry">
+                <h2>PLEASE TRY AGAIN</h2>
+            </div>
+
+        </div>
+
+    `;
+
+    overlay.appendChild(denied);
+
+
+    // پاک کردن جواب قبلی
+    input.value = "";
+
+
+    // حدود 2.5 ثانیه نمایش Access Denied
+    setTimeout(() => {
+
+        denied.classList.add("hide");
+
+    }, 2200);
+
+
+    // حذف Access Denied و برگشت فرم
+    setTimeout(() => {
+
+        denied.remove();
+
+        securityStage.classList.remove(
+            "denied-hide"
+        );
+
+        // انیمیشن برگشت فرم
+        securityStage.classList.add(
+            "denied-return"
+        );
+
+        setTimeout(() => {
+
+            securityStage.classList.remove(
+                "denied-return"
+            );
+
+            input.focus();
+
+        }, 700);
+
+    }, 3000);
+
+}
+
+// =========================================
+// ACCESS GRANTED
+// =========================================
+
+function securityGranted(overlay) {
+
+    const securityStage =
+        overlay.querySelector(
+            ".security-stage"
+        );
+
+    securityStage.classList.add(
+        "security-success"
+    );
+
+
+    setTimeout(() => {
+
+        securityStage.style.opacity = "0";
+        securityStage.style.transform =
+            "scale(.85)";
+
+
+        setTimeout(() => {
+
+            securityStage.style.display =
+                "none";
+
+
+            const loadingStage =
+                overlay.querySelector(
+                    ".loading-stage"
+                );
+
+
+            loadingStage.classList.add(
+                "show"
+            );
+
+
+            startLoading(overlay);
+
+
+        }, 700);
+
+    }, 900);
+
+}
+
+
+// =========================================
+// LOADING
+// =========================================
 
 function startLoading(overlay) {
 
     const loadingBar =
-        overlay.querySelector("#loading-bar");
+        overlay.querySelector(
+            "#loading-bar"
+        );
 
     const loadingPercent =
-        overlay.querySelector("#loading-percent");
+        overlay.querySelector(
+            "#loading-percent"
+        );
 
     const loadingStatus =
-        overlay.querySelector("#loading-status");
+        overlay.querySelector(
+            "#loading-status"
+        );
 
 
     let progress = 0;
 
 
-    const loadingMessages = [
-
-        "INITIALIZING ARCHIVE...",
+    const messages = [
 
         "VERIFYING ACCESS...",
+
+        "AUTHORIZATION CONFIRMED...",
 
         "LOADING HIDDEN PROJECTS...",
 
@@ -853,86 +1176,79 @@ function startLoading(overlay) {
 
         "ACCESSING CLASSIFIED ARCHIVE...",
 
-        "SAFE MODE READY..."
-
-    ];
+        "SAFE MODE READY..."];
 
 
     let messageIndex = 0;
 
 
-    // تغییر نوشته‌ها
+    const messageTimer =
+        setInterval(() => {
 
-    const messageTimer = setInterval(() => {
+            if (
+                messageIndex <
+                messages.length
+            ) {
 
-        if (messageIndex < loadingMessages.length) {
+                loadingStatus.textContent =
+                    messages[messageIndex];
 
-            loadingStatus.textContent =
-                loadingMessages[messageIndex];
+                messageIndex++;
 
-            messageIndex++;
+            }
 
-        }
-
-    }, 1000);
-
-
-
-    // نوار Loading
-
-    const loadingTimer = setInterval(() => {
-
-        progress++;
-
-        loadingBar.style.width =
-            progress + "%";
-            loadingPercent.textContent =
-            progress + "%";
+        }, 700);
 
 
-        // =========================
-        // 100%
-        // =========================
+    const loadingTimer =
+        setInterval(() => {
 
-        if (progress >= 100) {
-
-            clearInterval(loadingTimer);
-
-            clearInterval(messageTimer);
+            progress += 1;
 
 
-            loadingStatus.textContent =
-                "ACCESS GRANTED";
+            loadingBar.style.width =
+                progress + "%";
 
 
             loadingPercent.textContent =
-                "100%";
+                progress + "%";
 
 
-            // کمی مکث بعد از 100%
+            if (progress >= 100) {
 
-            setTimeout(() => {
+                clearInterval(
+                    loadingTimer
+                );
 
-                enterSafeMode(overlay);
+                clearInterval(
+                    messageTimer
+                );
 
-            }, 900);
 
-        }
+                loadingStatus.textContent =
+                    "ACCESS GRANTED";
 
-    }, 35);
+
+                setTimeout(() => {
+
+                    enterSafeMode(
+                        overlay
+                    );
+
+                }, 900);
+
+            }
+
+        }, 35);
 
 }
 
 
-
-// ==================================================
-// انتقال سینمایی به Safe Mode
-// ==================================================
+// =========================================
+// ACCESS GRANTED → SAFE MODE
+// =========================================
 
 function enterSafeMode(overlay) {
-
-    // به hidden.html می‌گوییم که باید
-    // با انیمیشن وارد شود
 
     sessionStorage.setItem(
         "safeModeTransition",
@@ -940,19 +1256,10 @@ function enterSafeMode(overlay) {
     );
 
 
-    // تاریک شدن و Zoom نرم
+    overlay.classList.add(
+        "leaving"
+    );
 
-    overlay.style.transition =
-        "opacity 1s ease, transform 1s ease";
-
-    overlay.style.opacity =
-        "0";
-
-    overlay.style.transform =
-        "scale(1.08)";
-
-
-    // بعد از یک ثانیه صفحه عوض شود
 
     setTimeout(() => {
 
@@ -963,6 +1270,181 @@ function enterSafeMode(overlay) {
 
 }
 
+
+// =========================================
+// DENIED SOUND
+// =========================================
+
+function playDeniedSound() {
+
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    if (!AudioContext) return;
+
+    const audio = new AudioContext();
+
+    const now = audio.currentTime;
+
+
+    // =================================
+    // BASS / LOW RUMBLE
+    // =================================
+
+    const bass = audio.createOscillator();
+    const bassGain = audio.createGain();
+
+    bass.type = "sine";
+
+    bass.frequency.setValueAtTime(
+        70,
+        now
+    );
+
+    bass.frequency.exponentialRampToValueAtTime(
+        42,
+        now + 1.8
+    );
+
+    bassGain.gain.setValueAtTime(
+        0.001,
+        now
+    );
+
+    bassGain.gain.exponentialRampToValueAtTime(
+        0.35,
+        now + 0.08
+    );
+
+    bassGain.gain.exponentialRampToValueAtTime(
+        0.001,
+        now + 2
+    );
+
+    bass.connect(bassGain);
+    bassGain.connect(audio.destination);
+
+    bass.start(now);
+    bass.stop(now + 2);
+
+
+    // =================================
+    // EPIC ALARM
+    // =================================
+
+    const alarm = audio.createOscillator();
+    const alarmGain = audio.createGain();
+
+    alarm.type = "square";
+
+    alarm.frequency.setValueAtTime(
+        220,
+        now
+    );
+
+    alarm.frequency.linearRampToValueAtTime(
+        480,
+        now + 0.45
+    );
+
+    alarm.frequency.linearRampToValueAtTime(
+        220,
+        now + 0.9
+    );
+
+    alarm.frequency.linearRampToValueAtTime(
+        480,
+        now + 1.35
+    );
+
+    alarm.frequency.linearRampToValueAtTime(
+        180,
+        now + 1.8
+    );
+
+
+    alarmGain.gain.setValueAtTime(
+        0.001,
+        now
+    );
+
+    alarmGain.gain.linearRampToValueAtTime(
+        0.13,
+        now + 0.08
+    );
+
+    alarmGain.gain.setValueAtTime(
+        0.13,
+        now + 1.55
+    );
+
+    alarmGain.gain.exponentialRampToValueAtTime(
+        0.001,
+        now + 1.9
+    );
+
+
+    alarm.connect(alarmGain);
+    alarmGain.connect(audio.destination);
+
+    alarm.start(now);
+    alarm.stop(now + 1.9);
+
+
+    // =================================
+    // FINAL IMPACT
+    // =================================
+
+    const impact = audio.createOscillator();
+    const impactGain = audio.createGain();
+
+    impact.type = "triangle";
+
+    impact.frequency.setValueAtTime(
+        110,
+        now + 0.05
+    );
+
+    impact.frequency.exponentialRampToValueAtTime(
+        45,
+        now + 0.55
+    );
+
+    impactGain.gain.setValueAtTime(
+        0.001,
+        now
+    );
+
+    impactGain.gain.exponentialRampToValueAtTime(
+        0.25,
+        now + 0.06
+    );
+
+    impactGain.gain.exponentialRampToValueAtTime(
+        0.001,
+        now + 0.65
+    );
+
+
+    impact.connect(impactGain);
+    impactGain.connect(audio.destination);
+
+    impact.start(now);
+    impact.stop(now + 0.7);
+
+
+    // =================================
+    // CLOSE AUDIO
+    // =================================
+
+    setTimeout(() => {
+
+        audio.close();
+
+    }, 2200);
+
+}
     </script>
 </body>
 </html>

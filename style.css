@@ -38,12 +38,12 @@ body::before {
 }
 
 header{
-    z-index: 900;
-    position: fixed;
-    background-color: rgba(255,255,255,0.1) ;
-    top: 0;
-    left: 0;
-    width: 100%;
+    z-index: 889 !important;
+    position: fixed !important;
+    background-color: #3a6cf4 !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
     padding: 15px 200px;
     display: flex;
     justify-content: space-between;
@@ -52,7 +52,7 @@ header{
 }
 
 header.sticky{
-    background-color: #3a6cf4 !important;
+    background-color: #3a6cf4 !important ;
     padding: 10px 200px;
 }
 
@@ -1765,4 +1765,1213 @@ html {
 
         filter: brightness(1.35);
     }
+}
+
+/* =========================================
+   SECURITY QUESTION SYSTEM
+   ========================================= */
+
+.security-stage {
+    width: 100%;
+    transition:
+        opacity .8s ease,
+        transform 1s cubic-bezier(.16,1,.3,1);
+}
+
+
+/* Warning */
+
+.security-message {
+    margin: 25px auto;
+    font-family: monospace;
+    letter-spacing: 3px;
+}
+
+.security-message span {
+    display: block;
+    color: #ff3333;
+    font-size: 14px;
+    font-weight: bold;
+    animation: warningBlink 1s infinite;
+}
+
+.security-message p {
+    margin-top: 8px;
+    opacity: .55;
+    font-size: 11px;
+}
+
+
+/* Question box */
+
+.security-question {
+    width: min(520px, 90vw);
+    margin: 30px auto 0;
+
+    padding: 30px;
+
+    border: 1px solid rgba(255,255,255,.18);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.05),
+            rgba(0,0,0,.35)
+        );
+
+    box-shadow:
+        0 0 40px rgba(255,255,255,.04);
+
+    backdrop-filter: blur(10px);
+}
+
+
+.question-label {
+    font-family: monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    opacity: .45;
+
+    margin-bottom: 20px;
+}
+
+
+.question-text {
+    font-size: clamp(18px, 4vw, 26px);
+
+    letter-spacing: 1px;
+
+    margin-bottom: 25px;
+}
+
+
+#security-answer {
+
+    width: 100%;
+
+    padding: 15px;
+
+    background: rgba(0,0,0,.5);
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    color: white;
+
+    outline: none;
+
+    font-family: monospace;
+
+    text-align: center;
+
+    font-size: 16px;
+
+    transition: .3s;
+}
+
+
+#security-answer:focus {
+
+    border-color: white;
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.15);
+
+}
+
+
+#verify-access {
+
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 14px;
+
+    border: 1px solid rgba(255,255,255,.4);
+
+    background: white;
+
+    color: black;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    border-radius: 15px;
+}
+
+
+#verify-access:hover {
+
+    background: transparent;
+
+    color: white;
+
+    box-shadow:
+        0 0 25px rgba(255,255,255,.15);
+
+    
+
+}
+
+
+.security-hint {
+
+    margin-top: 15px;
+
+    font-family: monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    opacity: .35;
+}
+
+
+/* =========================================
+   ACCESS DENIED
+   ========================================= */
+
+.access-denied {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999999;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        rgba(80,0,0,.2);
+
+    pointer-events: none;
+
+    animation:
+        deniedScreen .18s infinite;
+}
+
+
+.access-denied-box {
+
+    text-align: center;
+
+    animation:
+        deniedBox .3s
+        cubic-bezier(.68,-.55,.27,1.55);
+}
+
+
+.denied-glitch {
+
+    color: #ff1e1e;
+
+    font-family: monospace;
+
+    font-weight: 900;
+
+    font-size: clamp(
+        45px,
+        10vw,
+        110px
+    );
+
+    letter-spacing: 5px;
+
+    text-shadow:
+        5px 0 #700000,
+        -5px 0 #ff5555,
+        0 0 25px #ff0000;
+
+    animation:
+        glitchText .12s infinite;
+}
+
+
+.denied-sub {
+
+    margin-top: 15px;
+
+    color: #ff5555;
+
+    font-family: monospace;
+
+    letter-spacing: 4px;
+
+    font-size: 13px;
+}
+
+
+.denied-retry {
+
+    margin-top: 10px;
+
+    color: white;
+
+    opacity: .55;
+
+    font-family: monospace;
+
+    letter-spacing: 3px;
+
+    font-size: 10px;
+}
+
+
+.access-denied.hide {
+
+    opacity: 0;
+
+    transition: opacity .5s ease;
+}
+
+
+/* =========================================
+   LOADING STAGE
+   ========================================= */
+
+.loading-stage {
+
+    display: none;
+
+    width: 100%;
+
+    opacity: 0;
+
+    transform: scale(.9);
+
+    transition:
+        opacity .8s ease,
+        transform 1s
+        cubic-bezier(.16,1,.3,1);
+}
+
+
+.loading-stage.show {
+
+    display: block;
+
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+.loading-info {
+
+    width: min(500px, 90vw);
+
+    margin: 15px auto 0;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    opacity: .6;
+}
+
+
+/* =========================================
+   EXIT TO SAFE MODE
+   ========================================= */
+
+#secret-overlay.leaving {
+
+    opacity: 0;
+
+    transform: scale(1.12);
+
+    filter: blur(8px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease,
+        filter 1s ease;
+}
+
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes warningBlink {
+
+    0%, 100% {
+        opacity: .45;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes deniedBox {
+
+    0% {
+        transform:
+            scale(1.5)
+            translateX(-10px);
+
+        opacity: 0;
+    }
+
+    60% {
+        transform:
+            scale(.95)
+            translateX(8px);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            scale(1)
+            translateX(0);
+    }
+
+}
+
+
+@keyframes glitchText {
+
+    0% {
+        transform: translate(0);
+    }
+
+    25% {
+        transform: translate(-4px, 2px);
+    }
+
+    50% {
+        transform: translate(4px, -2px);
+    }
+
+    75% {
+        transform: translate(-2px, -1px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+
+}
+
+
+@keyframes deniedScreen {
+
+    0%, 100% {
+        background:
+            rgba(80,0,0,.15);
+    }
+
+    50% {
+        background:
+            rgba(255,0,0,.08);
+    }
+
+}
+/* =========================================
+   HIDE SECURITY FORM DURING ACCESS DENIED
+   ========================================= */
+
+.security-stage.denied-hide {
+
+    opacity: 0 !important;
+
+    transform:
+        scale(.85)
+        translateY(15px) !important;
+
+    filter: blur(8px);
+
+    pointer-events: none;
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease,
+        filter .35s ease;
+}
+
+
+/* =========================================
+   ACCESS DENIED SCREEN
+   ========================================= */
+
+.access-denied {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 999999999;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    pointer-events: none;
+
+    background:
+        rgba(40, 0, 0, .12);
+
+    animation:none;
+    transform: none;
+}
+
+
+.access-denied-box {
+
+    text-align: center;
+
+    width: 90%;
+
+    animation:
+        deniedAppear .35s
+        cubic-bezier(.16,1,.3,1);
+}
+
+
+/* متن اصلی */
+
+.denied-glitch {
+
+    color: #ff1d1d;
+
+    font-family: monospace;
+
+    font-weight: 900;
+
+    font-size:
+        clamp(42px, 10vw, 110px);
+
+    letter-spacing: 5px;
+
+    text-shadow:
+
+        4px 0 #650000,
+
+        -4px 0 #ff5555,
+
+        0 0 15px #ff0000,
+
+        0 0 35px rgba(255,0,0,.7);
+
+    animation:
+        glitchText .11s infinite;
+}
+
+
+/* متن دوم */
+
+.denied-sub {
+
+    margin-top: 18px;
+
+    color: #ff5555;
+
+    font-family: monospace;
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    animation:
+        deniedBlink .5s infinite;
+}
+
+
+/* متن سوم */
+
+.denied-retry {
+
+    margin-top: 12px;
+
+    color: white;
+
+    opacity: .6;
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================
+   EXIT ACCESS DENIED
+   ========================================= */
+
+.access-denied.hide {
+
+    opacity: 0;
+
+    transform: scale(1.15);
+
+    filter: blur(10px);
+
+    transition:
+
+        opacity .5s ease,
+
+        transform .6s ease,
+
+        filter .6s ease;
+}
+
+
+/* =========================================
+   FORM COMING BACK
+   ========================================= */
+
+.security-stage.denied-return {
+
+    animation:
+        securityReturn .7s
+        cubic-bezier(.16,1,.3,1);
+}
+
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes deniedShake {
+
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-4px, 2px);
+    }
+
+    40% {
+        transform: translate(4px, -2px);
+    }
+
+    60% {
+        transform: translate(-3px, -1px);
+    }
+
+    80% {
+        transform: translate(3px, 2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+
+}
+
+
+@keyframes deniedAppear {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(1.5)
+            translateY(20px);
+
+    }
+
+    60% {
+
+        opacity: 1;
+
+        transform:
+            scale(.96)
+            translateY(0);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes glitchText {
+
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-5px, 2px);
+    }
+
+    40% {
+        transform: translate(4px, -2px);
+    }
+
+    60% {
+        transform: translate(-3px, -1px);
+    }
+
+    80% {
+        transform: translate(3px, 2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+
+}
+
+
+@keyframes deniedBlink {
+
+    0%,
+    100% {
+        opacity: .45;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes securityReturn {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(.88)
+            translateY(25px);
+
+        filter: blur(8px);
+
+    }
+
+    60% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.02)
+            translateY(0);
+
+        filter: blur(0);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+        filter: blur(0);
+
+    }
+
+}
+
+/* =========================================
+   NEON CLICK HERE CALLOUT
+   ========================================= */
+
+.neon-callout {
+    position: absolute ;
+
+    top: 75px ;
+    left: 210px ;
+
+    width: 190px;
+    height: 150px;
+
+    z-index: 10000 ;
+
+    pointer-events: none;
+    
+
+   
+    
+    
+    animation: socialShow 1s ease forwards;
+}
+
+
+/* متن */
+
+.click-text {
+    position: absolute;
+
+    top: 35px;
+    left: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+
+    transform: rotate(-8deg);
+
+    font-family: Arial, sans-serif;
+
+    animation: textGlow 1.5s ease-in-out infinite;
+     animation-delay: 1s;
+    
+     z-index: 0;
+     
+}
+
+.click-text span {
+    font-size: 17px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    color: rgb(192, 70, 0);
+
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 35px #ff00ff;
+    animation-delay: 1s;
+    
+}
+
+.click-text small {
+    margin-top: 4px;
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+
+    color: #fff;
+
+    opacity: .8;
+animation-delay: 1s;
+}
+
+
+/* =========================================
+   CURVED ARROW
+   ========================================= */
+
+/* =========================================
+   REVERSED CURVED ARROW
+   شروع از چپ → پایین → برگشت به بالا
+   ========================================= */
+
+.neon-arrow {
+    position: absolute;
+
+    left: 5px;
+    top: 35px;
+
+    width: 150px;
+    height: 120px;
+
+    transform: rotate(0deg);
+}
+
+
+/* مسیر خمیده */
+
+.arrow-line {
+    position: absolute;
+
+    left: 5px;
+    top: 5px;
+
+    width: 135px;
+    height: 95px;
+
+    border: none;
+
+    border-bottom: 4px solid #00ffff;
+
+    border-right: 4px solid #00ffff;
+
+    border-radius: 0 0 100px 100px;
+
+    transform: rotate(-25deg);
+
+    filter:
+        drop-shadow(0 0 4px #00ffff)
+        drop-shadow(0 0 12px #00ffff)
+        drop-shadow(0 0 22px #ff00ff);
+
+    animation: neonColor 3s linear infinite;
+}
+
+
+/* نوک فلش — رو به بالا */
+
+.arrow-head {
+    position: absolute;
+
+    left: 102px;
+    top: -22px;
+
+    width: 25px;
+    height: 25px;
+
+    border: none;
+
+    border-left: 5px solid #ff00ff;
+    border-top: 5px solid #ff00ff;
+
+    transform: rotate(45deg);
+
+    filter:
+        drop-shadow(0 0 5px #ff00ff)
+        drop-shadow(0 0 15px #ff00ff)
+        drop-shadow(0 0 25px #ff00ff);
+
+    animation: arrowUpPulse 1s ease-in-out infinite;
+}
+
+
+/* =========================================
+   حرکت نوک فلش به سمت بالا
+   ========================================= */
+
+@keyframes arrowUpPulse {
+
+    0% {
+        transform: rotate(45deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(45deg) scale(1.2);
+    }
+
+    100% {
+        transform: rotate(45deg) scale(1);
+    }
+
+}
+
+
+/* =========================================
+   BULBS
+   ========================================= */
+
+.neon-bulbs span {
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: rgb(221, 165, 11);
+
+    box-shadow:
+        0 0 5px white,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff;
+
+    animation:
+        bulbBlink 1.2s infinite alternate,
+        bulbColor 4s linear infinite;
+}
+
+
+/* جای لامپ‌ها */
+
+.neon-bulbs span:nth-child(1) {
+    left: 12px;
+    top: 115px;
+}
+
+.neon-bulbs span:nth-child(2) {
+    left: 28px;
+    top: 127px;
+}
+
+.neon-bulbs span:nth-child(3) {
+    left: 50px;
+    top: 137px;
+}
+
+.neon-bulbs span:nth-child(4) {
+    left: 78px;
+    top: 140px;
+}
+
+.neon-bulbs span:nth-child(5) {
+    left: 105px;
+    top: 130px;
+}
+
+.neon-bulbs span:nth-child(6) {
+    left: 125px;
+    top: 115px;
+}
+
+.neon-bulbs span:nth-child(7) {
+    left: 133px;
+    top: 95px;
+}
+
+.neon-bulbs span:nth-child(8) {
+    left: 137px;
+    top: 75px;
+}/* =========================================
+   REVERSED CURVED ARROW
+   شروع از چپ → پایین → برگشت به بالا
+   ========================================= */
+
+.neon-arrow {
+    position: absolute;
+
+    left: 5px;
+    top: 35px;
+
+    width: 150px;
+    height: 120px;
+
+    transform: rotate(0deg);
+}
+
+
+/* مسیر خمیده */
+
+.arrow-line {
+    position: absolute;
+
+    left: 5px;
+    top: 5px;
+
+    width: 135px;
+    height: 95px;
+
+    border: none;
+
+    border-bottom: 4px solid #00ffff;
+
+    border-right: 4px solid #00ffff;
+
+    border-radius: 0 0 100px 100px;
+
+    transform: rotate(-25deg);
+
+    filter:
+        drop-shadow(0 0 4px #00ffff)
+        drop-shadow(0 0 12px #00ffff)
+        drop-shadow(0 0 22px #ff00ff);
+
+    animation: neonColor 3s linear infinite;
+}
+
+
+/* نوک فلش — رو به بالا */
+
+.arrow-head {
+    position: absolute;
+
+    right: -2px;
+    bottom: 8px;
+
+    width: 25px;
+    height: 25px;
+
+    border: none;
+
+    border-left: 5px solid #ff00ff;
+    border-top: 5px solid #ff00ff;
+
+    transform: rotate(45deg);
+
+    filter:
+        drop-shadow(0 0 5px #ff00ff)
+        drop-shadow(0 0 15px #ff00ff)
+        drop-shadow(0 0 25px #ff00ff);
+
+    animation: arrowUpPulse 1s ease-in-out infinite;
+}
+
+
+/* =========================================
+   حرکت نوک فلش به سمت بالا
+   ========================================= */
+
+@keyframes arrowUpPulse {
+
+    0% {
+        transform: rotate(45deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(45deg) scale(1.2);
+    }
+
+    100% {
+        transform: rotate(45deg) scale(1);
+    }
+
+}
+
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes bulbBlink {
+
+    0% {
+        opacity: .35;
+        transform: scale(.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+
+    100% {
+        opacity: .5;
+        transform: scale(.9);
+    }
+}
+
+
+@keyframes bulbColor {
+
+    0% {
+        box-shadow:
+            0 0 5px rgb(255, 255, 255),
+            0 0 12px #00ffff,
+            0 0 25px #00ffff;
+    }
+
+    50% {
+        box-shadow:
+            0 0 5px white,
+            0 0 12px #ff00ff,
+            0 0 25px #ff00ff;
+    }
+
+    100% {
+        box-shadow:
+            0 0 5px white,
+            0 0 12px #00ffff,
+            0 0 25px #00ffff;
+    }
+}
+
+
+@keyframes neonColor {
+
+    0% {
+        border-color: #00ffff;
+    }
+
+    33% {
+        border-color: #ff00ff;
+    }
+
+    66% {
+        border-color: #ffff00;
+    }
+
+    100% {
+        border-color: #0a8b06;
+    }
+}
+
+
+@keyframes arrowPulse {
+
+    0% {
+        transform: rotate(-35deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(-35deg) scale(1.2);
+    }
+
+    100% {
+        transform: rotate(-35deg) scale(1);
+    }
+}
+
+
+@keyframes textGlow {
+
+    0%,
+    100% {
+        opacity: .65;
+        transform: rotate(-8deg) scale(.95);
+    }
+
+    50% {
+        opacity: 1;
+        transform: rotate(-8deg) scale(1.05);
+    }
+}
+
+
+@keyframes calloutFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .neon-callout {
+        top: 65px;
+        left: 120px;
+
+        transform: scale(.75);
+
+        transform-origin: left top;
+    }
+
 }
