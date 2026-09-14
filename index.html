@@ -821,6 +821,8 @@ function activateSecretMode() {
 
     overlay.innerHTML = `
 
+       <button id="secret-exit" type="button"> ❌ </button>
+
         <div class="secret-content">
 
             <div class="security-stage">
@@ -935,6 +937,32 @@ function activateSecretMode() {
 
     document.body.appendChild(overlay);
 
+    const secretExit =
+    document.getElementById("secret-exit");
+
+
+if (secretExit) {
+
+    secretExit.addEventListener("click", () => {
+
+        // خروج نرم از Safe Mode
+        overlay.style.opacity = "0";
+
+        overlay.style.transform = "scale(1.05)";
+
+        document.body.style.overflow = "";
+
+
+        setTimeout(() => {
+
+            overlay.remove();
+
+        }, 800);
+
+    });
+
+}
+
     document.body.style.overflow = "hidden";
 
 
@@ -973,7 +1001,7 @@ function activateSecretMode() {
 
         if (correct) {
 
-            securityGranted(overlay);
+            showAccessGranted(overlay, answerInput);
 
         } else {
 
@@ -1087,6 +1115,181 @@ function showAccessDenied(overlay, input) {
 
     }, 3000);
 
+}
+
+function showAccessGranted(overlay, input) {
+
+    // صدای موفقیت
+    playSuccessSound();
+
+    const securityStage =
+        overlay.querySelector(".security-stage");
+
+    // مخفی کردن سؤال و فرم
+    securityStage.classList.add("success-hide");
+
+
+    // ساخت صفحه موفقیت
+    const success =
+        document.createElement("div");
+
+    success.className = "access-granted";
+
+    success.innerHTML = `
+
+        <div class="access-granted-box">
+
+            <div class="granted-check">
+                ✓
+            </div>
+
+            <div class="granted-glitch">
+                ACCESS GRANTED
+            </div>
+
+            <div class="granted-sub">
+                <h1>ANSWER VERIFIED</h1>
+            </div>
+
+            <div class="granted-status">
+                <h1>REQUEST IS BEING PROCESSED...</h1>
+            </div>
+
+        </div>
+
+    `;
+
+    overlay.appendChild(success);
+
+
+    // حدود 2 ثانیه نمایش موفقیت
+    setTimeout(() => {
+
+        success.classList.add("hide");
+
+    }, 3000);
+
+
+    // بعد از نمایش موفقیت
+    // برو سراغ مرحله Loading
+    setTimeout(() => {
+
+        success.remove();
+
+        // مخفی کردن کامل مرحله سؤال
+        securityStage.classList.remove(
+            "success-hide"
+        );
+        securityStage.style.opacity = "0";
+        securityStage.style.transform = "scale(.85)";
+        securityStage.style.display = "none";
+
+        // نمایش مرحله Loading
+        const loadingStage =
+            overlay.querySelector(".loading-stage");
+
+        loadingStage.classList.add("show");
+
+        // اجرای Loading فعلی خودت
+        startLoading(overlay);
+
+    }, 3000);
+
+}
+
+function playSuccessSound() {
+
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    if (!AudioContext) return;
+
+    const audio =
+        new AudioContext();
+
+    const now =
+        audio.currentTime;
+
+
+    // نت اول
+    const oscillator1 =
+        audio.createOscillator();
+
+    const gain1 =
+        audio.createGain();
+
+    oscillator1.type = "sine";
+
+    oscillator1.frequency.setValueAtTime(
+        523.25,
+        now
+    );
+
+    gain1.gain.setValueAtTime(
+        0.001,
+        now
+    );
+
+    gain1.gain.exponentialRampToValueAtTime(
+        0.18,
+        now + 0.03
+    );
+
+    gain1.gain.exponentialRampToValueAtTime(
+        0.001,
+        now + 0.35
+    );
+
+
+    oscillator1.connect(gain1);
+    gain1.connect(audio.destination);
+
+
+    // نت دوم
+    const oscillator2 =
+        audio.createOscillator();
+
+    const gain2 =
+        audio.createGain();
+
+    oscillator2.type = "sine";
+
+    oscillator2.frequency.setValueAtTime(
+        783.99,
+        now + 0.12
+    );
+
+    gain2.gain.setValueAtTime(
+        0.001,
+        now
+    );
+
+    gain2.gain.exponentialRampToValueAtTime(
+        0.16,
+        now + 0.15
+    );
+
+    gain2.gain.exponentialRampToValueAtTime(
+        0.001,
+        now + 0.65
+    );
+
+
+    oscillator2.connect(gain2);
+    gain2.connect(audio.destination);
+
+
+    oscillator1.start(now);
+    oscillator1.stop(now + 0.4);
+
+    oscillator2.start(now + 0.12);
+    oscillator2.stop(now + 0.7);
+
+
+    setTimeout(() => {
+        audio.close();
+    }, 800);
 }
 
 // =========================================

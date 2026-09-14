@@ -38,7 +38,7 @@ body::before {
 }
 
 header{
-    z-index: 1!important;
+    z-index: 889!important;
     position: fixed !important;
     background-color: #3a6cf4 !important;
     top: 0 !important;
@@ -476,7 +476,7 @@ section{
 }
 
 .services .content .card:hover{
-    background-color: #3a6cf4;
+    background-color: #dfac21;
     color: white;
 }
 
@@ -484,7 +484,7 @@ section{
 .services .content .card:hover .info h3
 {
     transform: translateY(-10px);
-    color: white;
+    color: rgb(153, 58, 41);
 }
 
 /* Work */
@@ -2037,6 +2037,231 @@ html {
     transition: opacity .5s ease;
 }
 
+/* =========================
+   ACCESS GRANTED
+========================= */
+
+.access-granted {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 999999;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: rgba(0,0,0,.96);
+
+    color: white;
+
+    text-align: center;
+
+    animation: grantedFadeIn .6s ease forwards;
+}
+
+
+.access-granted-box {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+/* تیک */
+
+.granted-check {
+
+    width: 85px;
+    height: 85px;
+
+    border: 3px solid #39ff88;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: #39ff88;
+
+    font-size: 55px;
+
+    font-weight: bold;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 0 10px #39ff88,
+        0 0 30px rgba(57,255,136,.6),
+        0 0 70px rgba(57,255,136,.25);
+
+    animation:
+        grantedPulse 1.5s ease-in-out infinite;
+
+}
+
+
+/* ACCESS GRANTED */
+
+.granted-glitch {
+
+    color: #39ff88;
+
+    font-family: monospace;
+
+    font-size: clamp(25px, 6vw, 50px);
+
+    font-weight: bold;
+
+    letter-spacing: 6px;
+
+    text-shadow:
+        0 0 8px #39ff88,
+        0 0 20px rgba(57,255,136,.7);
+
+}
+
+
+/* ANSWER VERIFIED */
+
+.granted-sub h2 {
+
+    margin: 15px 0 0;
+
+    font-family: monospace;
+
+    font-size: 14px;
+
+    letter-spacing: 4px;
+
+    color: rgba(255,255,255,.8);
+
+}
+
+
+/* REQUEST */
+
+.granted-status h2 {
+
+    margin-top: 12px;
+
+    font-family: monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: rgba(255,255,255,.5);
+
+}
+
+
+/* خروج */
+
+.access-granted.hide {
+
+    animation:
+        grantedFadeOut .7s ease forwards;
+
+}
+
+
+/* مخفی شدن سؤال */
+
+.security-stage.success-hide {
+
+    opacity: 0 !important;
+
+    transform: scale(.9);
+
+    pointer-events: none;
+
+}
+
+
+/* animations */
+
+@keyframes grantedFadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(.9);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+}
+
+
+@keyframes grantedFadeOut {
+
+    from {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+    to {
+
+        opacity: 0;
+
+        transform: scale(1.08);
+
+    }
+
+}
+
+
+@keyframes grantedPulse {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
+        box-shadow:
+            0 0 10px #39ff88,
+            0 0 30px rgba(57,255,136,.5);
+
+    }
+
+    50% {
+
+        transform: scale(1.08);
+
+        box-shadow:
+            0 0 20px #39ff88,
+            0 0 60px rgba(57,255,136,.9),
+            0 0 100px rgba(57,255,136,.3);
+
+    }
+
+}
+
 
 /* =========================================
    LOADING STAGE
@@ -2512,13 +2737,13 @@ html {
 .neon-callout {
     position: absolute ;
 
-    top: 90px ;
+    top: 120px ;
     left: 210px ;
 
     width: 190px;
     height: 150px;
 
-    z-index: 0;
+    z-index: 888;
 
     pointer-events: none;
     
@@ -2972,6 +3197,90 @@ animation-delay: 1s;
         transform: scale(.75);
 
         transform-origin: left top;
+    }
+
+}
+
+#secret-exit {
+
+    position: absolute;
+
+    top: 25px;
+    right: 600px;
+
+    z-index: 9999999;
+
+    padding: 10px 18px;
+
+    background: rgba(0,0,0,.4);
+
+    border: 1px solid rgba(255,255,255,.4);
+
+    color: white;
+
+    font-family: monospace;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    transform: translateY(-10px);
+
+    border-radius: 15px;
+
+    align-items: center;
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease,
+        background .3s ease,
+        border-color .3s ease;
+}
+
+
+/* وقتی Safe Mode باز شد */
+
+#secret-overlay.active #secret-exit {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* Hover */
+
+#secret-exit:hover {
+
+    background: rgb(255, 255, 255);
+
+    color: black;
+
+    border-color: white;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 30px rgba(255,255,255,.5);
+}
+
+
+/* موبایل */
+
+@media (max-width: 600px) {
+
+    #secret-exit {
+
+        top: 15px;
+        right: 15px;
+
+        padding: 8px 12px;
+
+        font-size: 10px;
+
     }
 
 }
